@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'ArtworksController@index');
+Route::get('/create', 'ArtworksController@create');
+Route::post('/store', 'ArtworksController@store');
 
 Auth::routes();
 
