@@ -1,0 +1,35 @@
+.heading {
+	text-align: center;
+}
+
+.display-body {
+	width: 70%;
+	height: auto;
+	margin: auto;
+	padding: 1.5rem 2rem;
+	box-shadow: 0 10px 20px 0 grey, 0 10px 20px 0 grey;
+}
+
+.arts {
+	list-style-type: none;
+}
+
+.item {
+	display: flex;
+	flex-direction: row;
+}
+
+.item-details {
+	padding-left: 2rem;
+}
+
+.item-details h2, .item-details h3 {
+	margin-top: 0.25rem;
+	margin-bottom: 0.75rem;
+}
+
+.item-details p {
+	color: #666;
+	margin-top: 0.5rem;
+	margin-bottom: 0.25rem;
+}
