@@ -7,7 +7,7 @@
 	height: auto;
 	margin: auto;
 	padding: 1.5rem 2rem;
-	box-shadow: 0 10px 20px 0 grey, 0 10px 20px 0 grey;
+	box-shadow: 0 4px 6px 0 rgb(0, 0, 0, 0.19), 0 4px 6px 0 rgb(0, 0, 0, 0.19);
 }
 
 .arts {
@@ -32,4 +32,10 @@
 	color: #666;
 	margin-top: 0.5rem;
 	margin-bottom: 0.25rem;
+}
+
+.item-details #the-money {
+	color: #666;
+	margin-bottom: 1rem;
+	margin-top: 2rem;
 }
