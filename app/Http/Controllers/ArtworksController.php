@@ -19,7 +19,8 @@ class ArtworksController extends Controller
     public function store(Request $request){
     	$this->validate($request, [
     		'title' => 'required',
-            'thumbnail_dir' => 'image|nullable|max:1999'
+            'thumbnail_dir' => 'image|nullable|max:1999',
+            'price' => 'required'
     	]);
 
         // Handle file upload
