@@ -25,6 +25,9 @@
 		{!! Form::label('thumbnail_dir', 'Thumbnail') !!}<br />
 		{!! Form::file('thumbnail_dir') !!}
 		<br /><br />
+		{!! Form::label('audiofile_dir', 'Upload Your Song') !!}<br />
+		{!! Form::file('audiofile_dir') !!}
+		<br /><br />
 		{!! Form::submit('Submit', ['class' => 'btn', 'id' => 'btn']) !!}
 	{!! Form::close() !!}
 @endsection

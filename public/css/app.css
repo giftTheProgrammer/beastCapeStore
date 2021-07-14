@@ -10021,10 +10021,12 @@ h3 {
 .item {
   display: flex;
   flex-direction: row;
+  margin-bottom: 1rem;
 }
 
 .item-details {
   padding-left: 2rem;
+  width: 100%;
 }
 
 .item-details h2, .item-details h3 {
@@ -10042,4 +10044,11 @@ h3 {
   color: #666;
   margin-bottom: 1rem;
   margin-top: 2rem;
+}
+
+.item-details #play {
+  width: 100%;
+  display: block;
+  margin-top: 0.5rem;
+  margin-bottom: 1rem;
 }

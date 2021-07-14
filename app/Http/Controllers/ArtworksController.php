@@ -20,10 +20,11 @@ class ArtworksController extends Controller
     	$this->validate($request, [
     		'title' => 'required',
             'thumbnail_dir' => 'image|nullable|max:1999',
-            'price' => 'required'
+            'price' => 'required',
+            'audiofile_dir' => 'required|file|mimes:audio/mpeg,mpga,mp3,wav,aac'
     	]);
 
-        // Handle file upload
+        // Handle image file upload
         if ($request->hasFile('thumbnail_dir')) {
             # Get the file name with the extension.
             $fileNameWithExt = $request->file('thumbnail_dir')->getClientOriginalName();
@@ -34,22 +35,35 @@ class ArtworksController extends Controller
             # Get just the filename extension.
             $extension = $request->file('thumbnail_dir')->getClientOriginalExtension();
 
-            # Filename to store
+            # Filename to store.
             $fileNametoStore = $fileName . '_' . time() . '.' . $extension;
 
-            # Upload the image
+            # Upload the image.
             $path = $request->file('thumbnail_dir')->storeAs('public/photos/', $fileNametoStore);
         } else {
             $fileNametoStore = 'noImage.jpg';
         }
 
-        // $picPath = (new ArtworkThumbnailController)->update($request);
+        // Handle audio file upload
+        if ($request->hasFile('audiofile_dir')) {
+            # Get the file name with the extension.
+            $wholeFileName = $request->file('audiofile_dir')->getClientOriginalName();
 
-        // $picPath::update();
+            # Get the size of the audio file.
+            $audioFileSize = $request->file('audiofile_dir')->getSize();
 
-        //$path = $request->file('thumbnail_dir')->store('/photos/', $request->user()->id, 'public');
+            # Get just the file name.
+            $songName = pathinfo($wholeFileName, PATHINFO_FILENAME);
 
-    	// $full_dir = "/photos/" . $request->input('thumbnail_dir');
+            # Get just the filename extension.
+            $extension = $request->file('audiofile_dir')->getClientOriginalExtension();
+
+            # Filename to store.
+            $songNameToStore = $songName . '_' . time() . '.' . $extension;
+
+            # Upload the song
+            $songPath = $request->file('audiofile_dir')->storeAs('public/songs/', $songNameToStore);
+        }
 
     	$artwork = new Artwork;
     	$artwork->title = $request->input('title');
@@ -57,6 +71,7 @@ class ArtworksController extends Controller
     	$artwork->user_id = auth()->user()->id;
     	$artwork->artwork_price = $request->input('price');
     	$artwork->artwork_thumbnail = $fileNametoStore;
+        $artwork->mainfile = $songNameToStore;
         $artwork->save();
 
     	return redirect('/');
