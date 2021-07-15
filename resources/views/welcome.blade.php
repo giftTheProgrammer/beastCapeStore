@@ -9,7 +9,9 @@
 			        
 			        <li class="arts">
 			           	<div class="item">
-			            	<img src="{{URL::asset('storage/photos/'.$artwork->artwork_thumbnail)}}" height="360" width="280" />
+			           		<a href="/show/{{$artwork->id}}">
+			            		<img src="{{URL::asset('storage/photos/'.$artwork->artwork_thumbnail)}}" height="360" width="280" />
+			            	</a>
 			            	<div class="item-details">
 			            		<p>Title:</p>
 			            		<h2>{{ $artwork->title }}</h2>

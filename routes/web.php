@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', 'ArtworksController@index');
 Route::get('/create', 'ArtworksController@create');
 Route::post('/store', 'ArtworksController@store');
+Route::get('/show/{id}/', 'ArtworksController@show');
 
 Auth::routes();
 

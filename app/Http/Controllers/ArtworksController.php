@@ -77,6 +77,18 @@ class ArtworksController extends Controller
     	return redirect('/');
     }
 
+    /**
+    * Display the specified resource.
+    *
+    * @param int $id
+    * @return Illuminate\Http\Response
+    */
+
+    public function show($id){
+        $artwork = Artwork::find($id);
+        return view('artworks.show')->with('artwork', $artwork);
+    }
+
     public function update(Request $request, $id){
     	$this->validate($request, [
     		'title' => 'required'
