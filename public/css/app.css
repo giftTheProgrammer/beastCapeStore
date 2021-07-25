@@ -10046,6 +10046,20 @@ h3 {
   margin-top: 2rem;
 }
 
+.myworks tbody tr {
+  height: 5rem;
+}
+
+.artwork-title {
+  width: 15rem;
+  padding-left: 1rem;
+}
+
+.st-size {
+  width: 6rem;
+  text-align: center;
+}
+
 .item-details #play {
   width: 100%;
   display: block;

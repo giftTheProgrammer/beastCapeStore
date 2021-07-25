@@ -55,6 +55,9 @@
                             @endif
                         @else
                             <li>
+                                <a href="/home" class="nav-link">Home</a>
+                            </li>
+                            <li>
                                 <a class="nav-link" href="/create">Sumbit item</a>
                             </li>
                             <li class="nav-item dropdown">
@@ -81,6 +84,7 @@
         </nav>
 
         <main class="py-4">
+            @include('inc.messages')
             @yield('content')
         </main>
     </div>
