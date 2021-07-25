@@ -17,6 +17,9 @@ Route::get('/', 'ArtworksController@index');
 Route::get('/create', 'ArtworksController@create');
 Route::post('/store', 'ArtworksController@store');
 Route::get('/show/{id}/', 'ArtworksController@show');
+Route::get('/artworks/{id}/edit', 'ArtworksController@edit');
+Route::match(['put', 'patch'],'/update/{id}', 'ArtworksController@update');
+Route::match(['delete'], '/destroy/{id}', 'ArtworksController@destroy');
 
 Auth::routes();
 
