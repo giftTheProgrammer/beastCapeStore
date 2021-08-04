@@ -59,7 +59,7 @@ class ArtworksController extends Controller
             # Upload the image.
             $path = $request->file('thumbnail_dir')->storeAs('public/photos/', $fileNametoStore);
         } else {
-            $fileNametoStore = 'noImage.jpg';
+            $fileNametoStore = 'no_image_available.jpg';
         }
 
         // Handle audio file upload

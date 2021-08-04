@@ -1,4 +1,4 @@
-@extends('layouts.app');
+@extends('layouts.app')
 
 @section('content')
 	<h1>Sumbit an Artwork</h1>
@@ -13,21 +13,45 @@
 		</div>
 	@endif
 	{!! Form::open(['action' => 'ArtworksController@store', 'method' => 'POST', 'id' => 'form-edit', 'enctype' => 'multipart/form-data', 'file' => true]) !!}
-		{!! Form::label('artwork_type', 'Type') !!}<br />
-		{!! Form::select('artwork_type', ['music' => 'Music', 'book' => 'Book']) !!}
+		<div class="form-group">
+			{{ Form::label('artwork_type', 'Type') }}<br />
+			{{ Form::select('artwork_type', ['music' => 'Music', 'book' => 'Book'], null, ['class' => 'form-control']) }}
+		</div>
+		
+		<br />
+		<div class="form-group">
+			{{ Form::label('title', 'Title') }}<br />
+			{{ Form::text('title', '',['class' => 'form-control']) }}
+		</div>
+		<br />
+		<div class="form-group">
+			{{ Form::label('price', 'Price') }}<br />
+			{{ Form::text('price', '', ['class' => 'form-control']) }}
+		</div>
+		<br />
+		<div class="custom-file">
+			{{ Form::file('thumbnail_dir', ['class' => 'custom-file-input']) }}
+			{{ Form::label('thumbnail_dir', 'Thumbnail', ['class' => 'custom-file-label']) }}
+		</div>
 		<br /><br />
-		{!! Form::label('title', 'Title') !!}<br />
-		{!! Form::text('title') !!}
+		<div class="custom-file">
+			{{ Form::file('audiofile_dir', ['class' => 'custom-file-input']) }}
+			{{ Form::label('audiofile_dir', 'Upload Your Song', ['class' => 'custom-file-label']) }}
+		</div>
 		<br /><br />
-		{!! Form::label('price', 'Price') !!}<br />
-		{!! Form::text('price') !!}
-		<br /><br />
-		{!! Form::label('thumbnail_dir', 'Thumbnail') !!}<br />
-		{!! Form::file('thumbnail_dir') !!}
-		<br /><br />
-		{!! Form::label('audiofile_dir', 'Upload Your Song') !!}<br />
-		{!! Form::file('audiofile_dir') !!}
-		<br /><br />
-		{!! Form::submit('Submit', ['class' => 'btn', 'id' => 'btn']) !!}
+		<div class="form-group">
+			{{ Form::submit('Submit', ['class' => 'btn btn-primary', 'id' => 'btn']) }}
+		</div>
 	{!! Form::close() !!}
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$(".custom-file-input").on("change", function(){
+		        var fileName = $(this).val().split("\\").pop();
+		        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+		    });
+		});
+    </script>
+		
+
 @endsection
