@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-header">{{ __('Dashboard') }}</div>              
                 @if (session('status'))
@@ -40,7 +40,7 @@
                         <td class="st-size">
                             {!! Form::open(['action' => ['ArtworksController@destroy', $artwork->id], 'method' => 'POST']) !!}
                                 {{ Form::hidden('_method', 'DELETE') }}
-                                {{ Form::submit('Delete', ['class' => 'btn btn-primary']) }}
+                                {{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
                             {!! Form::close() !!}
                         </td>
                     </tr>
