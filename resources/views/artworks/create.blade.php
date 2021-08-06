@@ -21,9 +21,16 @@
 		<br />
 		<div class="form-group">
 			{{ Form::label('title', 'Title') }}<br />
-			{{ Form::text('title', '',['class' => 'form-control']) }}
+			{{ Form::text('title', '', ['class' => 'form-control']) }}
 		</div>
 		<br />
+
+		<div class="form-group">
+			{{ Form::label('artist', 'Artist') }}
+			{{ Form::text('artist', '', ['class' =>  'form-control']) }}
+		</div>
+		<br />
+		
 		<div class="form-group">
 			{{ Form::label('price', 'Price') }}<br />
 			{{ Form::text('price', '', ['class' => 'form-control']) }}

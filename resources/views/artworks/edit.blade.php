@@ -28,6 +28,12 @@
 		<br /><br />
 
 		<div class="form-group">
+			{{ Form::label('artist', 'Artist') }}
+			{{ Form::text('artist', $artwork->artist, ['class' =>  'form-control']) }}
+		</div>
+		<br />
+
+		<div class="form-group">
 			{{ Form::label('price', 'Price') }}
 			{{ Form::text('price', $artwork->artwork_price, ['class' => 'form-control']) }}
 		</div>

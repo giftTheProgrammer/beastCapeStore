@@ -37,6 +37,7 @@ class ArtworksController extends Controller
     public function store(Request $request){
     	$this->validate($request, [
     		'title' => 'required',
+            'artist' => 'required',
             'thumbnail_dir' => 'image|nullable|max:1999',
             'price' => 'required',
             'audiofile_dir' => 'required|file|mimes:audio/mpeg,mpga,mp3,wav,aac'
@@ -85,6 +86,7 @@ class ArtworksController extends Controller
 
     	$artwork = new Artwork;
     	$artwork->title = $request->input('title');
+        $artwork->artist = $request->input('artist');
     	$artwork->artwork_type = $request->input('artwork_type');
     	$artwork->user_id = auth()->user()->id;
     	$artwork->artwork_price = $request->input('price');
@@ -134,6 +136,7 @@ class ArtworksController extends Controller
     public function update(Request $request, $id){
     	$this->validate($request, [
     		'title' => 'required',
+            'artist' => 'required',
             'thumbnail_dir' => 'image|nullable|max:1999',
             'price' => 'required',
             'audiofile_dir' => 'nullable|file|mimes:audio/mpeg,mpga,mp3,wav,aac'
@@ -180,6 +183,7 @@ class ArtworksController extends Controller
 
     	$artwork = Artwork::find($id);
     	$artwork->title = $request->input('title');
+        $artwork->artist = $request->input('artist');
     	$artwork->artwork_type = $request->input('artwork_type');
     	$artwork->artwork_price = $request->input('price');
         if ($request->hasFile('thumbnail_dir')) {

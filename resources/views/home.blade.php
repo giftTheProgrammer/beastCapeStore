@@ -23,7 +23,8 @@
                 <thead>
                 <tr>
                     <th></th>
-                    <th>Song</th>
+                    <th class="table-titles">Song</th>
+                    <th class="table-titles">Artist</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -36,6 +37,7 @@
                             <img src="{{URL::asset('storage/photos/'.$artwork->artwork_thumbnail)}}" height="60" width="45" />
                         </td>
                         <td class="artwork-title">{{ $artwork->title }}</td>
+                        <td class="artwork-title">{{ $artwork->artist }}</td>
                         <td class="st-size"><a href="/artworks/{{$artwork->id}}/edit" class="btn btn-primary">Edit</a></td>
                         <td class="st-size">
                             {!! Form::open(['action' => ['ArtworksController@destroy', $artwork->id], 'method' => 'POST']) !!}

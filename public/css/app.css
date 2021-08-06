@@ -10050,6 +10050,10 @@ h3 {
   height: 5rem;
 }
 
+.table-titles {
+  padding-left: 1rem;
+}
+
 .artwork-title {
   width: 15rem;
   padding-left: 1rem;
