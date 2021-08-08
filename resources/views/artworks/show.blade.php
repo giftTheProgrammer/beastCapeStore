@@ -14,9 +14,11 @@
 			<div class="item-details">
 	           	<p>Title:</p>
 	            <h2>{{ $artwork->title }}</h2>
-	            <p>Type:</p>
-	            <h3>{{ $artwork->artwork_type }}</h3>
-	            <h3 id="the-money"><strong>R{{ $artwork->artwork_price }}</strong></h3>
+	            <p>Artist:</p>
+	            <h3>{{ $artwork->artist }}</h3>
+	            <p>Description:</p>
+	            <p>{{ $artwork->description }}</p>
+	            <h3 id="the-money">R{{ $artwork->artwork_price }}</h3>
 	            <audio controls id="play">
 	                <source src="{{URL::asset('storage/songs/'.$artwork->mainfile)}}" type="audio/mpeg" />
 	            </audio>

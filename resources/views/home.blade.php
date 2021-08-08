@@ -19,7 +19,7 @@
 
     <div class="display-body">
         @if(count($artworks) > 0)
-            <table class="myworks">
+            <table class="table-striped myworks">
                 <thead>
                 <tr>
                     <th></th>
@@ -34,10 +34,18 @@
                 @foreach($artworks as $artwork)
                     <tr>
                         <td>
-                            <img src="{{URL::asset('storage/photos/'.$artwork->artwork_thumbnail)}}" height="60" width="45" />
+                            <a href="/show/{{ $artwork->id }}">
+                                <img src="{{URL::asset('storage/photos/'.$artwork->artwork_thumbnail)}}" height="60" width="45" />
+                            </a>
                         </td>
+                        
                         <td class="artwork-title">{{ $artwork->title }}</td>
                         <td class="artwork-title">{{ $artwork->artist }}</td>
+                        <td>
+                            <audio controls id="play">
+                                <source src="{{ URL::asset('/storage/songs/'.$artwork->mainfile) }}" type="audio/mpeg">
+                            </audio>
+                        </td>
                         <td class="st-size"><a href="/artworks/{{$artwork->id}}/edit" class="btn btn-primary">Edit</a></td>
                         <td class="st-size">
                             {!! Form::open(['action' => ['ArtworksController@destroy', $artwork->id], 'method' => 'POST']) !!}
