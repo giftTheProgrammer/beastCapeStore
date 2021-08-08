@@ -33,10 +33,17 @@
 			<br />
 
 			<div class="form-group">
+				{{ Form::label('description', 'Song Description') }}
+				{{ Form::textarea('description', '', ['class' => 'form-control']) }}
+			</div>
+			<br />
+
+			<div class="form-group">
 				{{ Form::label('price', 'Price') }}<br />
 				{{ Form::text('price', '', ['class' => 'form-control']) }}
 			</div>
 			<br />
+			
 			<div class="custom-file">
 				{{ Form::file('thumbnail_dir', ['class' => 'custom-file-input']) }}
 				{{ Form::label('thumbnail_dir', 'Thumbnail', ['class' => 'custom-file-label']) }}

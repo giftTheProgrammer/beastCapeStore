@@ -35,6 +35,12 @@
 			<br />
 
 			<div class="form-group">
+				{{ Form::label('description', 'Song Description') }}
+				{{ Form::textarea('description', $artwork->description, ['class' => 'form-control']) }}
+			</div>
+			<br />
+
+			<div class="form-group">
 				{{ Form::label('price', 'Price') }}
 				{{ Form::text('price', $artwork->artwork_price, ['class' => 'form-control']) }}
 			</div>

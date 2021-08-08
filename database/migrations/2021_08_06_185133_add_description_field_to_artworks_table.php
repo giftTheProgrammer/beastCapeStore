@@ -14,7 +14,7 @@ class AddDescriptionFieldToArtworksTable extends Migration
     public function up()
     {
         Schema::table('artworks', function (Blueprint $table) {
-            $table->mediumString('description')->nullable();
+            $table->mediumText('description')->nullable();
         });
     }
 

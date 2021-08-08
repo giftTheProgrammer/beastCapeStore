@@ -87,6 +87,7 @@ class ArtworksController extends Controller
     	$artwork = new Artwork;
     	$artwork->title = $request->input('title');
         $artwork->artist = $request->input('artist');
+        $artwork->description = $request->input('description');
     	$artwork->artwork_type = $request->input('artwork_type');
     	$artwork->user_id = auth()->user()->id;
     	$artwork->artwork_price = $request->input('price');
@@ -183,6 +184,7 @@ class ArtworksController extends Controller
 
     	$artwork = Artwork::find($id);
     	$artwork->title = $request->input('title');
+        $artwork->description = $request->input('description');
         $artwork->artist = $request->input('artist');
     	$artwork->artwork_type = $request->input('artwork_type');
     	$artwork->artwork_price = $request->input('price');
