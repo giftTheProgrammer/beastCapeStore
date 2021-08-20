@@ -30,7 +30,7 @@
                             @endif
                         @else
                             <li>
-                                <a href="/home" class="nav-link">Home</a>
+                                <a href="{{ route('home') }}" class="nav-link">Home</a>
                             </li>
                             <li>
                                 <a class="nav-link" href="/create">Sumbit item</a>

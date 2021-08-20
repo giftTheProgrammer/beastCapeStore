@@ -10004,6 +10004,25 @@ h3 {
 }
 .heading {
   text-align: center;
+  color: #eee;
+}
+
+#app {
+  background-color: #2a9df5;
+  min-height: 100vh;
+}
+
+.navbar {
+  background-color: #FFFFFF00 !important;
+  color: #FFF !important;
+}
+
+.navbar .navbar-nav {
+  color: #FFF !important;
+}
+
+#space-up {
+  margin-top: 1rem;
 }
 
 .display-body {
@@ -10011,11 +10030,27 @@ h3 {
   height: auto;
   margin: auto;
   padding: 1.5rem 2rem;
-  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.19), 0 4px 6px 0 rgba(0, 0, 0, 0.19);
 }
 
 .arts {
   list-style-type: none;
+}
+
+.col-lg-2 {
+  list-style-type: none;
+  padding: 1rem;
+}
+
+.col-lg-2 card {
+  box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.19), 0 4px 6px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card .art-pic {
+  margin: auto;
+}
+
+.nav-item .nav-link {
+  color: #FFF !important;
 }
 
 .item {
@@ -10027,6 +10062,14 @@ h3 {
 .item-details {
   padding-left: 2rem;
   width: 100%;
+}
+
+.card-title {
+  font-size: 1rem;
+}
+
+.card-text {
+  font-size: 0.75rem;
 }
 
 .item-details h2, .item-details h3 {

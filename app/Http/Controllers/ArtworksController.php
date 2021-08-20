@@ -95,7 +95,7 @@ class ArtworksController extends Controller
         $artwork->mainfile = $songNameToStore;
         $artwork->save();
 
-    	return redirect('/home')->with('success', 'Song successfully submitted!');
+    	return redirect('user/artworks')->with('success', 'Song successfully submitted!');
     }
 
     /**
@@ -196,7 +196,7 @@ class ArtworksController extends Controller
         }
     	$artwork->save();
 
-    	return redirect('/home')->with('success', 'Song Updated!');
+    	return redirect('user/artworks')->with('success', 'Song Updated!');
     }
 
     /**
@@ -220,6 +220,6 @@ class ArtworksController extends Controller
         Storage::delete('/public/songs/'.$artwork->mainfile);
 
         $artwork->delete();
-        return redirect('/home')->with('success', 'Song Removed!');
+        return redirect('user/artworks')->with('success', 'Song Removed!');
     }
 }

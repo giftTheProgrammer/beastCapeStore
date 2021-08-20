@@ -5,7 +5,7 @@
 		@guest
 			<a href="/" class="btn btn-outline-dark">Back</a>
 		@else
-			<a href="/home" class="btn btn-outline-dark">Back</a>
+			<a href="{{ URL::route('home') }}" class="btn btn-outline-dark">Back</a>
 		@endguest
 		<h1>{{$artwork->title}}</h1>
 		<div class="item">

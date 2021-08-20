@@ -26,7 +26,25 @@ class LoginController extends Controller
      *
      * @var string
      */
+
+    /**
+    * The user has been authenticated.
+    *
+    *
+    * @param \Illuminate\Http\Request $request.
+    * @param mixed $user
+    * @return mixed
+    */
+
+    // protected function authenticated(Request $request, $user){
+    //     return response([
+    //         //
+    //     ]);
+    // }
+    
     protected $redirectTo = RouteServiceProvider::HOME;
+    
+    
 
     /**
      * Create a new controller instance.

@@ -46,7 +46,7 @@
                                 <source src="{{ URL::asset('/storage/songs/'.$artwork->mainfile) }}" type="audio/mpeg">
                             </audio>
                         </td>
-                        <td class="st-size"><a href="/artworks/{{$artwork->id}}/edit" class="btn btn-primary">Edit</a></td>
+                        <td class="st-size"><a href="/artworks/{{$artwork->id}}/edit" class="btn btn-warning">Edit</a></td>
                         <td class="st-size">
                             {!! Form::open(['action' => ['ArtworksController@destroy', $artwork->id], 'method' => 'POST']) !!}
                                 {{ Form::hidden('_method', 'DELETE') }}
