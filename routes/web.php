@@ -14,7 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'ArtworksController@index');
-Route::get('/create', 'ArtworksController@create');
+
+Route::get('/create', function(){
+	if (Gate::allows('admin-only', Auth::user())) {
+		return view('artworks.create');
+	} else {
+		abort(403);
+	}
+});
+
+
 Route::post('/store', 'ArtworksController@store');
 Route::get('/show/{id}/', 'ArtworksController@show');
 Route::get('/artworks/{id}/edit', 'ArtworksController@edit');

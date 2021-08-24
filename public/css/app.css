@@ -10025,11 +10025,15 @@ h3 {
   margin-top: 1rem;
 }
 
-.display-body {
+.display-body, .home-body {
   width: 100%;
   height: auto;
   margin: auto;
   padding: 1.5rem 2rem;
+}
+
+.home-body {
+  background-color: #FFF !important;
 }
 
 .arts {

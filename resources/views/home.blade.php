@@ -17,7 +17,7 @@
         </div>
     </div>
 
-    <div class="display-body">
+    <div class="home-body">
         @if(count($artworks) > 0)
             <table class="table-striped myworks">
                 <thead>

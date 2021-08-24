@@ -21,12 +21,15 @@
 	margin-top: 1rem;
 }
 
-.display-body {
+.display-body, .home-body {
 	width: 100%;
 	height: auto;
 	margin: auto;
-	padding: 1.5rem 2rem
-	// box-shadow: 0 4px 6px 0 rgb(0, 0, 0, 0.19), 0 4px 6px 0 rgb(0, 0, 0, 0.19);
+	padding: 1.5rem 2rem;
+}
+
+.home-body {
+	background-color: #FFF !important;
 }
 
 .arts {
