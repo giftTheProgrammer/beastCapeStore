@@ -29,12 +29,15 @@
                                 </li>
                             @endif
                         @else
-                            <li>
-                                <a href="{{ route('home') }}" class="nav-link">Home</a>
-                            </li>
-                            <li>
-                                <a class="nav-link" href="/create">Sumbit item</a>
-                            </li>
+                            @can('admin-only', Auth::user())
+                                <li>
+                                    <a href="{{ route('home') }}" class="nav-link">Home</a>
+                                </li>
+                                <li>
+                                    <a class="nav-link" href="/create">Sumbit item</a>
+                                </li>
+                            @endcan
+                            
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}

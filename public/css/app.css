@@ -10017,8 +10017,10 @@ h3 {
   color: #FFF !important;
 }
 
-.navbar .navbar-nav {
+.nav-link {
   color: #FFF !important;
+  text-transform: uppercase;
+  font-weight: 500;
 }
 
 #space-up {
@@ -10049,7 +10051,9 @@ h3 {
   box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.19), 0 4px 6px 0 rgba(0, 0, 0, 0.19);
 }
 
-.card .art-pic {
+.card-img-top {
+  width: 100%;
+  height: 10rem;
   margin: auto;
 }
 
@@ -10091,6 +10095,10 @@ h3 {
   color: #666;
   margin-bottom: 1rem;
   margin-top: 2rem;
+}
+
+.bi.bi-play-btn {
+  margin: auto;
 }
 
 .myworks tbody tr {
