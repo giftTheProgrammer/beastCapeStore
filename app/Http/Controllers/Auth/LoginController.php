@@ -42,6 +42,7 @@ class LoginController extends Controller
     //     ]);
     // }
     
+    
     protected $redirectTo = RouteServiceProvider::HOME;
     
     
