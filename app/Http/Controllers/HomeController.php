@@ -24,7 +24,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-        //$user_id = Auth::id();
         $user = Auth::user();
         return view('home')->with('artworks', $user->artworks);
     }

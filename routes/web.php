@@ -26,10 +26,24 @@ Route::get('/create', function(){
 
 Route::post('/store', 'ArtworksController@store');
 Route::get('/show/{id}/', 'ArtworksController@show');
-Route::get('/artworks/{id}/edit', 'ArtworksController@edit');
+Route::get('/artworks/{id}/edit', function(){
+	if (Gate::allows('admin-only', Auth::user())) {
+		return view('ArtworksController@edit');
+	}else {
+		abort(403);
+	}
+});
+
 Route::match(['put', 'patch'],'/update/{id}', 'ArtworksController@update');
 Route::match(['delete'], '/destroy/{id}', 'ArtworksController@destroy');
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', function(){
+	if (Gate::allows('admin-only', Auth::user())) {
+		return ([App\Http\Controllers\HomeController::class, 'index']);
+	}else {
+		abort(403);
+	}
+	
+})->name('home');
