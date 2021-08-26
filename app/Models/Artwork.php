@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Artwork extends Model
 {
     use HasFactory;
-    public function user(){
-    	return $this->belongsTo('App\Models\User');
+    public function ArtistProfile(){
+    	return $this->belongsTo('App\Models\ArtistProfile');
     }
 }

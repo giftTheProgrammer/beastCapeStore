@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class MakeUserIdForeignKeyToArtworksTable extends Migration
+class AddArtistprofileIdForeignIdToArtworks extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class MakeUserIdForeignKeyToArtworksTable extends Migration
     public function up()
     {
         Schema::table('artworks', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreignId('artist_id')->constrained('artistprofiles');
         });
     }
 
@@ -26,7 +26,7 @@ class MakeUserIdForeignKeyToArtworksTable extends Migration
     public function down()
     {
         Schema::table('artworks', function (Blueprint $table) {
-            $table->dropForeign(['user_id']);
+            $table->dropForeign('artistprofiles_artist_id_foreign');
         });
     }
 }
