@@ -2,11 +2,12 @@
 
 namespace App\Policies;
 
-use App\Models\Artwork;
+use App\Models\ArtistPolicy;
 use App\Models\User;
+use App\Policies\Response;
 use Illuminate\Auth\Access\HandlesAuthorization;
 
-class ArtworkPolicy
+class ArtistProfilePolicy
 {
     use HandlesAuthorization;
 
@@ -18,19 +19,19 @@ class ArtworkPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
      * Determine whether the user can view the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Artwork  $artwork
+     * @param  \App\Models\ArtistPolicy  $artistPolicy
      * @return mixed
      */
-    public function view(User $user, Artwork $artwork)
+    public function view(User $user, ArtistPolicy $artistPolicy)
     {
-        //
+        return $user->id === $artistPolicy->$user->id;
     }
 
     /**
@@ -39,46 +40,43 @@ class ArtworkPolicy
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user, ArtistProfile $artist)
+    public function create(User $user)
     {
-        if (count($user->artist)) {
-            # code...
-        }
-        return $user->artistprofile; //is
+        return $user->is_admin === 1;
     }
 
     /**
      * Determine whether the user can update the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Artwork  $artwork
+     * @param  \App\Models\ArtistPolicy  $artistPolicy
      * @return mixed
      */
-    public function update(User $user, Artwork $artwork)
+    public function update(User $user, ArtistProfile $artist)
     {
-        return in_array($user->role_id, [2, 3]);
+        return $user->id === $artist->user_id;
     }
 
     /**
      * Determine whether the user can delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Artwork  $artwork
+     * @param  \App\Models\ArtistPolicy  $artistPolicy
      * @return mixed
      */
-    public function delete(User $user, Artwork $artwork)
+    public function delete(User $user, ArtistPolicy $artistPolicy)
     {
-        return $user->role_id == 2; //creator
+        //
     }
 
     /**
      * Determine whether the user can restore the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Artwork  $artwork
+     * @param  \App\Models\ArtistPolicy  $artistPolicy
      * @return mixed
      */
-    public function restore(User $user, Artwork $artwork)
+    public function restore(User $user, ArtistPolicy $artistPolicy)
     {
         //
     }
@@ -87,10 +85,10 @@ class ArtworkPolicy
      * Determine whether the user can permanently delete the model.
      *
      * @param  \App\Models\User  $user
-     * @param  \App\Models\Artwork  $artwork
+     * @param  \App\Models\ArtistPolicy  $artistPolicy
      * @return mixed
      */
-    public function forceDelete(User $user, Artwork $artwork)
+    public function forceDelete(User $user, ArtistPolicy $artistPolicy)
     {
         //
     }

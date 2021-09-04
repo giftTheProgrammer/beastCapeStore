@@ -28,9 +28,14 @@
 
 			<div class="form-group">
 				{{ Form::label('artist', 'Artist') }}
-				{{ Form::text('artist', '', ['class' =>  'form-control']) }}
+				{{ Form::text('artist', $artist->moniker, ['class' =>  'form-control', 'readonly']) }}
 			</div>
 			<br />
+
+			<div class="form-group">
+				{{ Form::label('artist_id', 'ArtistID') }}
+				{{ Form::text('artist_id', $artist->id, ['class' => 'form-control', 'readonly']) }}
+			</div>
 
 			<div class="form-group">
 				{{ Form::label('description', 'Song Description') }}

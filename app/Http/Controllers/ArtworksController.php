@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use App\Models\Artwork;
+use App\Models\ArtistProfile;
 use App\Http\Controllers\Auth;
 
 class ArtworksController extends Controller
@@ -19,6 +20,11 @@ class ArtworksController extends Controller
         $this->middleware('auth', ['except' => ['index', 'show']]);
     }
 
+    public function viewArtist($id){
+        $myworks = Artwork::where('artist_id', $id)->get();
+        return view('artworks.catalogue')->with('myworks', $myworks);
+    }
+
     /**
     * Display a listing of the resource.
     *
@@ -30,8 +36,10 @@ class ArtworksController extends Controller
     	return view('welcome')->with('artworks', $artworks);
     }
 
-    public function create(){
-    	return view('artworks.create');
+    public function create($id){
+        $artist = ArtistProfile::find($id);
+        // $this->authorize('create', Artworks::class);
+    	return view('artworks.create')->with('artist', $artist);
     }
 
     public function store(Request $request){
@@ -86,16 +94,16 @@ class ArtworksController extends Controller
 
     	$artwork = new Artwork;
     	$artwork->title = $request->input('title');
-        $artwork->artist = $request->input('artist');
+        // $artwork->artist = $request->input('artist');
         $artwork->description = $request->input('description');
     	$artwork->artwork_type = $request->input('artwork_type');
-    	$artwork->user_id = auth()->user()->id;
+    	$artwork->artist_id = $request->input('artist_id');
     	$artwork->artwork_price = $request->input('price');
     	$artwork->artwork_thumbnail = $fileNametoStore;
         $artwork->mainfile = $songNameToStore;
         $artwork->save();
 
-    	return redirect('/home')->with('success', 'Song successfully submitted!');
+    	return redirect('/artworks/viewArtist/'.$request->input('artist_id'))->with('success', 'Song successfully submitted!');
     }
 
     /**

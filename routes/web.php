@@ -13,15 +13,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', 'ArtworksController@index');
 
-Route::get('/create', function(){
-	if (Gate::allows('admin-only', Auth::user())) {
-		return view('artworks.create');
-	} else {
-		abort(403);
-	}
-});
+Route::get('/create/{id}', 'ArtworksController@create');
 
 
 Route::post('/store', 'ArtworksController@store');
@@ -36,6 +31,7 @@ Route::get('/artworks/{id}/edit', function(){
 
 Route::match(['put', 'patch'],'/update/{id}', 'ArtworksController@update');
 Route::match(['delete'], '/destroy/{id}', 'ArtworksController@destroy');
+Route::get('/artworks/viewArtist/{id}', 'ArtworksController@viewArtist');
 
 Auth::routes();
 
@@ -47,3 +43,15 @@ Route::get('/home', function(){
 	}
 	
 })->name('home');
+
+
+Route::get('/artists','ArtistProfileController@index');
+Route::get('/artists/create', 'ArtistProfileController@create');
+Route::post('/artists/store', 'ArtistProfileController@store');
+Route::get('/artists/show/{id}', 'ArtistProfileController@show');
+Route::get('/artists/{id}/edit', 'ArtistProfileController@edit');
+Route::patch('/artists/update/{id}', 'ArtistProfileController@update');
+Route::delete('/artists/destroy/{id}', 'ArtistProfileController@destroy');
+
+
+

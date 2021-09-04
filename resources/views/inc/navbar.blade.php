@@ -31,10 +31,10 @@
                         @else
                             @can('admin-only', Auth::user())
                                 <li>
-                                    <a href="{{ route('home') }}" class="nav-link">Home</a>
+                                    <a href="/artists" class="nav-link">Home</a>
                                 </li>
                                 <li>
-                                    <a class="nav-link" href="/create">Sumbit item</a>
+                                    <a class="nav-link" href="/artists/create">Create Profile</a>
                                 </li>
                             @endcan
                             

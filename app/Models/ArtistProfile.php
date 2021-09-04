@@ -18,6 +18,6 @@ class ArtistProfile extends Model
     }
 
     public function artwork(){
-    	return $this->belongsTo('App\Models\Artwork');
+    	return $this->hasMany('App\Models\Artwork');
     }
 }

@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'is_admin',
     ];
 
     /**
@@ -43,9 +44,5 @@ class User extends Authenticatable
 
     public function artistprofile(){
         return $this->hasMany('App\Models\ArtistProfile');
-    }
-
-    public function artworks(){
-        return $this->hasMany('App\Models\Artwork');
     }
 }

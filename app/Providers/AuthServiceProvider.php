@@ -2,6 +2,9 @@
 
 namespace App\Providers;
 
+use App\Policies\ArtistProfilePolicy;
+use App\Models\ArtistProfile;
+use App\Models\Artwork;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -13,6 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
+        ArtistProfile::class => ArtistProfilePolicy::class,
+        'App\Models\Artwork' => ArtworkPolicy::class,
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
@@ -31,5 +36,7 @@ class AuthServiceProvider extends ServiceProvider
             }
             return false;
         });
+
+        Gate::resource('ArtistProfiles', 'ArtistProfilePolicy');
     }
 }

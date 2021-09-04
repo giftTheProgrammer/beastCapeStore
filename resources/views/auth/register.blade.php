@@ -40,6 +40,17 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="account_type" class="col-md-4 col-form-label text-md-right">{{ __('Account') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="account_type" type="number" class="form-control" name="account_type" value="{{ old('account_type') }}" required>
+                                    <option value="0">Customer Account</option>
+                                    <option value="1">Artist Account</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
