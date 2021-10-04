@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Gate;
 use App\Models\Artwork;
 use App\Models\ArtistProfile;
-use App\Http\Controllers\Auth;
+use Illuminate\Support\Facades\Auth;
 
 class ArtworksController extends Controller
 {
@@ -38,8 +39,12 @@ class ArtworksController extends Controller
 
     public function create($id){
         $artist = ArtistProfile::find($id);
-        // $this->authorize('create', Artworks::class);
-    	return view('artworks.create')->with('artist', $artist);
+        if (Gate::allows('artform-create', Auth::user())) {
+            
+            return view('artworks.create')->with('artist', $artist);
+        }
+        abort(403);
+        
     }
 
     public function store(Request $request){
@@ -118,6 +123,11 @@ class ArtworksController extends Controller
         return view('artworks.show')->with('artwork', $artwork);
     }
 
+    public function playerLoad($id) {
+        $artwork = Artwork::find($id);
+        return $artwork;
+    }
+
     /**
     * Show the form for editing the specified resource.
     *
@@ -193,7 +203,7 @@ class ArtworksController extends Controller
     	$artwork = Artwork::find($id);
     	$artwork->title = $request->input('title');
         $artwork->description = $request->input('description');
-        $artwork->artist = $request->input('artist');
+        //$artwork->artist = $request->input('artist');
     	$artwork->artwork_type = $request->input('artwork_type');
     	$artwork->artwork_price = $request->input('price');
         if ($request->hasFile('thumbnail_dir')) {
@@ -204,7 +214,7 @@ class ArtworksController extends Controller
         }
     	$artwork->save();
 
-    	return redirect('/home')->with('success', 'Song Updated!');
+    	return redirect('/artworks/viewArtist/'.$request->input('artist_id'))->with('success', 'Song Updated!');
     }
 
     /**
@@ -215,9 +225,10 @@ class ArtworksController extends Controller
     */
     public function destroy($id){
         $artwork = Artwork::find($id);
+        $artist = ArtistProfile::find($artwork->artist_id);
 
         // Check for correct user
-        if (auth()->user()->id !== $artwork->user_id) {
+        if (auth()->user()->id !== $artist->user_id) {
             return redirect('/')->with('error', 'Unauthorized page!');
         }
 
@@ -228,6 +239,6 @@ class ArtworksController extends Controller
         Storage::delete('/public/songs/'.$artwork->mainfile);
 
         $artwork->delete();
-        return redirect('user/artworks')->with('success', 'Song Removed!');
+        return redirect('/artworks/viewArtist/'.$artist->id)->with('success', 'Song Removed!');
     }
 }

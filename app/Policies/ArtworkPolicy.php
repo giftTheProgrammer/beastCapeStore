@@ -34,17 +34,25 @@ class ArtworkPolicy
     }
 
     /**
+    * Determine whether user can play a song.
+    * 
+    * @param \App\Models\User $user
+    * @return 
+    */
+    public function playerLoad(User $user){
+        //
+    }
+
+    /**
      * Determine whether the user can create models.
      *
      * @param  \App\Models\User  $user
      * @return mixed
      */
-    public function create(User $user, ArtistProfile $artist)
+    public function create(User $user)
     {
-        if (count($user->artist)) {
-            # code...
-        }
-        return $user->artistprofile; //is
+        
+        return true;
     }
 
     /**

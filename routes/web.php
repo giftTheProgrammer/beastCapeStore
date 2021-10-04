@@ -21,6 +21,7 @@ Route::get('/create/{id}', 'ArtworksController@create');
 
 Route::post('/store', 'ArtworksController@store');
 Route::get('/show/{id}/', 'ArtworksController@show');
+Route::get('/playerLoad/{id}/', 'ArtworksController@playerLoad');
 Route::get('/artworks/{id}/edit', function(){
 	if (Gate::allows('admin-only', Auth::user())) {
 		return view('ArtworksController@edit');

@@ -60,7 +60,7 @@
 			</div>
 			<br /><br />
 			<div class="form-group">
-				{{ Form::submit('Submit', ['class' => 'btn btn-primary', 'id' => 'btn']) }}
+				{{ Form::submit('Submit', ['class' => 'btn btn-success', 'id' => 'btn']) }}
 			</div>
 		{!! Form::close() !!}
 	</div>
