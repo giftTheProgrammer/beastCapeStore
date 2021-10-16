@@ -40,7 +40,7 @@ class ArtworkPolicy
     * @return 
     */
     public function playerLoad(User $user){
-        //
+        return true;
     }
 
     /**
