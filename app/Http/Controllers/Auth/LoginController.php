@@ -35,12 +35,6 @@ class LoginController extends Controller
     * @param mixed $user
     * @return mixed
     */
-
-    // protected function authenticated(Request $request, $user){
-    //     return response([
-    //         //
-    //     ]);
-    // }
     
     
     protected $redirectTo = RouteServiceProvider::HOME;
@@ -56,4 +50,5 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
 }

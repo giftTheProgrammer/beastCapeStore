@@ -33,7 +33,7 @@ class ArtworksController extends Controller
     */
 
     public function index(){
-    	$artworks = Artwork::all();
+    	$artworks = Artwork::where('status', 'Approved')->get();
     	return view('welcome')->with('artworks', $artworks);
     }
 
@@ -144,6 +144,7 @@ class ArtworksController extends Controller
 
         return view('artworks.edit')->with('artwork', $artwork);
     }
+        
 
     /**
     * Update the specified resource in storage.
@@ -215,6 +216,23 @@ class ArtworksController extends Controller
     	$artwork->save();
 
     	return redirect('/artworks/viewArtist/'.$request->input('artist_id'))->with('success', 'Song Updated!');
+    }
+
+    /**
+    * Update the specified resource in storage.
+    *
+    * @param Illuminate\Http\Request $request
+    * @param int $id
+    * @return Illuminate\Http\Response.
+    */
+    public function approve(Request $request, $id){
+
+        $artwork = Artwork::find($id);
+        $artwork->status = $request->input('status');
+        
+        $artwork->save();
+
+        return redirect('/managers/'.$artwork->id.'/setStatus')->with('success', 'Status changed!');
     }
 
     /**

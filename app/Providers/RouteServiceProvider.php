@@ -20,6 +20,7 @@ class RouteServiceProvider extends ServiceProvider
 
     
     public const HOME = '/';
+    public const ADMIN_HOME = '/managers/';
     protected $namespace = 'App\Http\Controllers';
 
     /**
