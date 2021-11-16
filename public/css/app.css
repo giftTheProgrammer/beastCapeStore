@@ -1,5 +1,9 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @charset "UTF-8";
+@font-face {
+  font-family: "AcuminVariableConcept";
+  src: url("http://localhost:8000/fonts/AcuminVariableConcept.otf");
+}
 /*!
  * Bootstrap v4.6.0 (https://getbootstrap.com/)
  * Copyright 2011-2021 The Bootstrap Authors
@@ -10032,6 +10036,8 @@ h3 {
 }
 
 .touchdown {
+  font-family: "AcuminVariableConcept", sans-serif;
+  font-weight: 800;
   position: absolute;
   width: 35%;
   left: 20%;
@@ -10074,8 +10080,53 @@ h3 {
   background-color: #FFF !important;
 }
 
+.about-us {
+  background-color: #222;
+  height: 768px;
+  max-width: 1366px;
+  color: #fff;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  justify-items: start;
+}
+
+#part1 {
+  /* position: relative;
+  top: 30%;
+  left: 30%; */
+  align-self: end;
+  display: inline-block;
+  grid-column: 4/7;
+  grid-row: 1/2;
+}
+
+#part2 {
+  /* position: relative;
+  top: 40%;
+  left: 40%; */
+  align-self: start;
+  display: inline-block;
+  grid-column: 4/10;
+  grid-row: 2/3;
+}
+
+#part1 h2 {
+  font-size: 3rem;
+}
+
+#part2 p {
+  font-size: 3.5rem;
+}
+
 .arts {
   list-style-type: none;
+}
+
+.call-to-act {
+  background-color: #777;
+  height: 100vh;
+  display: flex;
 }
 
 .tiled {
@@ -10085,6 +10136,32 @@ h3 {
   width: 96%;
   margin: auto;
   margin-bottom: 2rem;
+}
+
+.artist, .audience {
+  width: 50%;
+}
+
+.artist {
+  background-image: url("http://localhost:8000/photos/photo002.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+
+.audience {
+  background-image: url("http://localhost:8000/photos/photo003.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+}
+
+.artist a, .audience a {
+  font-size: 4rem;
+  color: #eee;
+  text-decoration: none;
 }
 
 .tiled-item {
@@ -10172,10 +10249,8 @@ h3 {
 }
 
 .btn-secondary {
-  position: absolute;
+  margin: auto;
   bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
 }
 
 .card-title {
@@ -10204,6 +10279,10 @@ h3 {
 }
 
 .bi.bi-play-btn {
+  margin: auto;
+}
+
+.myworks {
   margin: auto;
 }
 
@@ -10321,4 +10400,17 @@ h3 {
   border-radius: 4px;
   height: 100%;
   width: 100%;
+}
+
+#footer {
+  background-color: #111;
+  color: #eee;
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+#middle {
+  grid-column: 2/3;
+  display: flex;
+  justify-content: space-around;
 }

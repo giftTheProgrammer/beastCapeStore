@@ -27,8 +27,8 @@
 		<div class="layover">
 			@include('inc.navbar')
 			<div class="touchdown">
-				<h1>BE-EAST CAPE</h1>
-				<p>The platform that never sleeps.</p>
+				<h1>BEAST CAPE</h1>
+				<p>Sell art, Buy art</p>
 			</div>
 		</div>
 	</div>

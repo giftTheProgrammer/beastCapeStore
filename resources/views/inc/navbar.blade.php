@@ -37,6 +37,12 @@
                                     <a class="nav-link" href="/artists/create">Create Profile</a>
                                 </li>
                             @endcan
+
+                            @can('user_role', Auth::user())
+                                <li>
+                                    <a href="/managers" class="nav-link">Dashboard</a>
+                                </li>
+                            @endcan
                             
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

@@ -73,7 +73,7 @@
 			<br />
 			<br />
 			<div class="form-group">
-				{{ Form::submit('Submit', ['class' => 'btn btn-secondary', 'id' => 'btn']) }}
+				{{ Form::submit('Create Profile', ['class' => 'btn btn-secondary', 'id' => 'btn']) }}
 			</div>
 		{!! Form::close() !!}
 

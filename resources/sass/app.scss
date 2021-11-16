@@ -1,5 +1,9 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
+@font-face {
+	font-family: "AcuminVariableConcept";
+	src: url("http://localhost:8000/fonts/AcuminVariableConcept.otf");
+}
 
 // Variables
 @import 'variables';
