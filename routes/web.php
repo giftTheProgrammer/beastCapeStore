@@ -31,10 +31,11 @@ Route::get('/artworks/{id}/edit', function(){
 });
 
 Route::match(['put', 'patch'],'/update/{id}', 'ArtworksController@update');
+Route::match(['put', 'patch'], '{id}/approve', 'ArtworksController@approve');
 Route::match(['delete'], '/destroy/{id}', 'ArtworksController@destroy');
 Route::get('/artworks/viewArtist/{id}', 'ArtworksController@viewArtist');
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
 Route::get('/home', function(){
 	if (Gate::allows('admin-only', Auth::user())) {
@@ -54,5 +55,7 @@ Route::get('/artists/{id}/edit', 'ArtistProfileController@edit');
 Route::patch('/artists/update/{id}', 'ArtistProfileController@update');
 Route::delete('/artists/destroy/{id}', 'ArtistProfileController@destroy');
 
+Route::get('/managers', 'ManagersController@index');
+Route::get('/managers/{id}/setStatus', 'ManagersController@edit');
 
 
