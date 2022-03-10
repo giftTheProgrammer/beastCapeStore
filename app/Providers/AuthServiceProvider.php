@@ -40,12 +40,19 @@ class AuthServiceProvider extends ServiceProvider
             return false;
         });
 
+        Gate::define('buyers-only', function(User $user){
+            if (optional($user)->role_id == 0) {
+                return true;
+            }
+            return false;
+        });
+
         Gate::define('artform-create', 'App\Policies\ArtworkPolicy@create');
+        Gate::define('view-music', 'App\Policies\ArtworkPolicy@musicView');
 
         Gate::resource('ArtistProfiles', 'ArtistProfilePolicy');
 
         Gate::define('user_role', 'App\Policies\ManagerPolicy@index');
-
         Gate::define('approve', 'App\Policies\ManagerPolicy@setStatus');
     }
 }

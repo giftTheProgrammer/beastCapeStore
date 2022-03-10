@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Models\Artwork;
 use App\Models\ArtistProfile;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 class ArtworksController extends Controller
 {
@@ -18,7 +19,7 @@ class ArtworksController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth', ['except' => ['index', 'show', 'playerLoad']]);
+        $this->middleware('auth', ['except' => ['index', 'show', 'playerLoad', 'musicView', 'cart', 'addToCart', 'remove']]);
     }
 
     public function viewArtist($id){
@@ -35,6 +36,28 @@ class ArtworksController extends Controller
     public function index(){
     	$artworks = Artwork::where('status', 'Approved')->get();
     	return view('welcome')->with('artworks', $artworks);
+    }
+
+    public function musicView(Request $request){
+        $songs = DB::table('artworks')->join('artist_profiles', 'artist_id', '=', 'artist_profiles.id')
+        ->select('artworks.*', 'artist_profiles.moniker')
+        ->where([['title','!=',Null],
+            [function ($query) use ($request){
+                if (($term = $request->term)) {
+                    $query->orWhere('title', 'LIKE', '%' . $term . '%')->get();
+                }
+            }],['status','Approved']])->get();
+
+
+        $artworks = Artwork::where([
+            ['title','!=',Null],
+            [function ($query) use ($request){
+                if (($term = $request->term)) {
+                    $query->orWhere('title', 'LIKE', '%' . $term . '%')->get();
+                }
+            }]])->where('status', 'Approved')->where('artwork_type', 'music')->get();
+        // return view('artworks.music', compact('artworks'))->with('i', ($request->input('page', 1) - 1) * 5);
+        return view("artworks.music")->with("artworks", $songs);
     }
 
     public function create($id){
@@ -122,6 +145,61 @@ class ArtworksController extends Controller
         $artwork = Artwork::find($id);
         return view('artworks.show')->with('artwork', $artwork);
     }
+
+    public function cart(){
+        return view('trolley');
+        // return session()->get('cart', []);
+    }
+
+    public function addToCart($id){
+            $artwork = DB::table('artworks')->join('artist_profiles', 'artist_id', '=', 'artist_profiles.id')
+            ->select('artworks.*', 'artist_profiles.moniker')->where('artworks.id', $id)->get();
+
+            $cart = session()->get('cart', []);
+
+            if (isset($cart[$id])) {
+                $cart[$id]['quantity']++;
+                session()->put('cart', $cart);
+            } else {
+                $cart[$id] = [
+                    "name" => $artwork[0]->title,
+                    "artist" => $artwork[0]->moniker,
+                    "quantity" => 1,
+                    "price" => $artwork[0]->artwork_price,
+                    "image" => $artwork[0]->artwork_thumbnail
+                ];
+            }
+
+            session()->put('cart', $cart);
+            return $cart;
+            return redirect()->back()->with('success', 'Artwork added to cart successfully');
+    }
+
+    public function updateCart(Request $request){
+        if ($request->id && $request->quantity) {
+            $cart = session()->get('cart');
+            $cart[$request->id]['quantity'] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully.');
+        }
+    }
+
+    public function checkout(){
+        return view('checkout');
+    }
+
+    public function remove(Request $request){
+        if ($request->id) {
+            $cart = session()->get('cart');
+            if (isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Artwork removed successfully');
+        }
+
+    }
+
 
     public function playerLoad($id) {
         $artwork = Artwork::find($id);

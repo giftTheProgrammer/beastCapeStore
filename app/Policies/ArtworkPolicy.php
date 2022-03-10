@@ -18,7 +18,7 @@ class ArtworkPolicy
      */
     public function viewAny(User $user)
     {
-        //
+        return true;
     }
 
     /**
@@ -30,7 +30,11 @@ class ArtworkPolicy
      */
     public function view(User $user, Artwork $artwork)
     {
-        //
+        return true;
+    }
+
+    public function musicView(){
+        return true;
     }
 
     /**

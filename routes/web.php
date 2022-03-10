@@ -34,6 +34,22 @@ Route::match(['put', 'patch'],'/update/{id}', 'ArtworksController@update');
 Route::match(['put', 'patch'], '{id}/approve', 'ArtworksController@approve');
 Route::match(['delete'], '/destroy/{id}', 'ArtworksController@destroy');
 Route::get('/artworks/viewArtist/{id}', 'ArtworksController@viewArtist');
+Route::get('/artworks/music', 'ArtworksController@musicView')->name('artworks.music');
+Route::get('/cart', function(){
+	// if (Gate::allows('buyers-only', Auth::user()) {
+		return view('trolley');
+	// }else {
+	// 	abort(403);
+	// }
+})->name('cart');
+
+Route::get('add-to-cart/{id}', 'ArtworksController@addToCart')->name('add.to.cart');
+Route::put('update-cart', 'ArtworksController@updateCart')->name('update.cart');
+Route::delete('remove-from-cart', 'ArtworksController@remove')->name('remove.from.cart');
+Route::get('/checkout', 'ArtworksController@checkout')->name('checkout');
+Route::get('/success', function(){ return view('success'); })->name('success');
+Route::get('/notify', function(){ return view('notify'); })->name('notify');
+Route::get('/cancel', function(){ return view('cancel'); })->name('cancel');
 
 Auth::routes(['verify' => true]);
 

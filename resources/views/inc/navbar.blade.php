@@ -15,8 +15,17 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="/artworks/music" class="nav-link">Music</a>
+                        </li>
+                        
+                        <li>
+                            <a href="/cart" class="nav-link">Cart</a>
+                        </li>
+                        
                         <!-- Authentication Links -->
                         @guest
+
                             @if (Route::has('login'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
@@ -29,6 +38,7 @@
                                 </li>
                             @endif
                         @else
+                            
                             @can('admin-only', Auth::user())
                                 <li>
                                     <a href="/artists" class="nav-link">Home</a>

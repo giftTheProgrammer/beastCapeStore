@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-		<a href="{{ URL::route('home') }}" class="btn btn-outline-dark">Back</a>
+		<a href="/managers" class="btn btn-outline-dark">Back</a>
 		<h1>Edit Song</h1>
 
 		@if($errors->any())

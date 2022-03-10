@@ -26,7 +26,10 @@
 	            @if(!Auth::guest())
 	            	@if(Auth::id() == $artwork->user_id)
 			            <a href="/artworks/{{$artwork->id}}/edit" class="btn btn-primary">Edit</a>
-			            <a href="/artworks/{{$artwork->id}}/edit" class="btn btn-primary">Delete</a>
+			            {!! Form::open(['action' => ['ArtworksController@remove', $artwork->id], 'method' => 'POST']) !!}
+							{{ Form::hidden('_method', 'DELETE') }}
+							{{ Form::submit('Delete', ['class' => 'btn btn-danger']) }}
+						{!! Form::close() !!}
 		            @endif
 	            @endif
 	        </div>

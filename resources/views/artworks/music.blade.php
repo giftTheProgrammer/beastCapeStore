@@ -1,7 +1,25 @@
-@extends('layouts.landing')
+@extends('layouts.app')
 
 @section('content')
-    <h1 class="heading">Artworks</h1>
+    <h1 class="heading">Music</h1>
+    <div>
+    	<div class="mx-auto pull-right">
+            <div class="">
+                <form action="{{ route('artworks.music') }}" method="GET" role="search">
+
+                    <div class="input-group">
+                        <span class="input-group-btn">
+                        	<button class="btn btn-info" type="submit">
+                        		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 36 37.31"><defs><style>.cls-1{fill:#f2f2f3;}</style></defs><title>Asset 3_search_icon</title><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M33.68,37.31a3.47,3.47,0,0,1-1.44-1c-2.76-2.89-5.53-5.76-8.3-8.64-.08-.08-.14-.17-.22-.26a14.88,14.88,0,0,1-12.56,2.2,14.53,14.53,0,0,1-8.68-6.28,15.06,15.06,0,1,1,24.13,1.44c1,1.06,2,2.11,3.05,3.17,1.88,2,3.74,3.95,5.66,5.87a2,2,0,0,1-.86,3.47s0,0-.06,0ZM15.07,26.19A11.13,11.13,0,1,0,3.93,15.09,11.13,11.13,0,0,0,15.07,26.19Z"/></g></g></svg>
+                        	</button>
+                        </span>
+                        <input type="text" class="form-control mr-2" name="term" placeholder="Search for songs" id="term">
+                        
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="display-body">
     	@if(count($artworks) > 0)
     	
@@ -15,6 +33,7 @@
 			            	</a>
 			            	<div class="card-body">
 			            		<h2 class="card-title">{{ $artwork->title }}</h2>
+			            		<h3 class="card-title"><strong>{{ $artwork->moniker }}</strong></h3>
 			            		<h3 id="the-money" class="card-text">
 			            			<strong>R{{ $artwork->artwork_price }}</strong>
 			            		</h3>
@@ -25,6 +44,7 @@
 								  <path d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm15 0a1 1 0 0 0-1-1H2a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V4z"/>
 								</svg>
 			            		</button>
+			            		<a href="{{ route('add.to.cart', $artwork->id) }}" class="btn btn-primary btn-block text-center">Add to cart</a>
 			            	</div>
 
 			            </div>
@@ -87,7 +107,7 @@
 		$(document).ready(function(){
 			$(".press_play").click(function(){
 				$.get("http://localhost:8000/playerLoad/"+this.name+"/", function(result, state){
-					console.warn(result);
+					musicContainer.style.display = "grid";
 
 					loadSong(result.mainfile, result.title);
 				});
@@ -97,6 +117,7 @@
 		function loadSong(song, title){
 			aud.src = "http://localhost:8000/storage/songs/" + song;
 			songname.innerHTML = title;
+			playSound();
 		}
 
 		function playSound(){

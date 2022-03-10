@@ -1,0 +1,104 @@
+@media(max-width: 576px){
+
+	.tiled {
+		grid-template-columns: 1fr;
+		width: 80%;
+	}
+
+	.col-lg-4 {
+		padding-left: 4px !important;
+		padding-right: 4px !important;
+	}
+
+	.row .col-lg-8 {
+		padding: 12px 0;
+	}
+
+	.col-lg-8 > h4 {
+		line-height: 1.0;
+		font-size: .75rem;
+	}
+
+	.col-lg-4 img {
+		height: 40px;
+		width: 40px;
+	}
+
+	.tiled-item {
+		height: 32rem;
+	}
+
+	.tiled-item .card {
+		height: 96%;
+	}
+
+	.tiled-item .card img {
+		height: 15rem;
+	}
+
+	#part1 h2 {
+		font-size: 1.2rem;
+	}
+
+	#part2 p {
+		font-size: 1.5rem;
+	}
+
+	.call-to-act {
+		flex-direction: column;
+	}
+
+	.artist, .audience {
+		width: 100%;
+		text-align: center;
+	}
+
+	#footer {
+		display: flex;
+		flex-direction: column-reverse;
+		height: 50vh !important;
+		width: 100%;
+	}
+
+	#footer .trident {
+		height: 30%;
+	}
+
+	#footer #middle {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-start;
+		height: 40%;
+		margin-top: 0;
+	}
+
+	#footer #useful-links {
+		margin-top: 0;
+	}
+
+	#socials {
+		position: relative;
+		top: 50%;
+		transform: translateY(-50%);
+		margin-top: 0;
+	}
+
+	#socials .social-icon {
+		width: 24px;
+		height: 24px;
+	}
+
+	#middle .address {
+		padding-left: 1.5rem;
+		justify-content: flex-start;
+	}
+
+	#middle #contact-details p svg {
+		width: 24px;
+		height: 24px;
+	}
+
+	#useful-links ul {
+		margin-top: 1rem;
+	}
+}

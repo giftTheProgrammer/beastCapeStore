@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Gate;
 use App\Models\Artwork;
 use App\Models\Manager;
 use Illuminate\Support\Facades\Auth;
+use DB;
 
 
 
@@ -30,7 +31,9 @@ class ManagersController extends Controller
      */
     public function index(){
     	$this->authorize('index', Manager::class);
-    	$artworks = Artwork::all();
+    	// $artworks = Artwork::all();
+        $artworks = DB::table('artworks')->join('artist_profiles', 'artist_id','=','artist_profiles.id')
+        ->select('artworks.*', 'artist_profiles.moniker')->get();
     	return view('managers.index')->with('artworks', $artworks);
     }
 
